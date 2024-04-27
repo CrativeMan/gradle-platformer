@@ -1,7 +1,7 @@
-package inputs;
+package io.crative.platformer.inputs;
 
-import gamestates.GameState;
-import main.GamePanel;
+import io.crative.platformer.gamestates.GameState;
+import io.crative.platformer.main.GamePanel;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

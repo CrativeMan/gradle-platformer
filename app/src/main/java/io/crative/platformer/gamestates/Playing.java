@@ -97,3 +97,5 @@ public class Playing extends State implements Statemethodes {
         return player;
     }
 }
+
+
