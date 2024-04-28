@@ -27,7 +27,7 @@ public class Player extends Entity {
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
         animator = new PlayerAnimations();
-        initHitbox(x, y, 20*Game.SCALE, 28*Game.SCALE);
+        initHitbox(x, y, (int) (20*Game.SCALE), (int) (28*Game.SCALE));
     }
 
     public void update(){
@@ -51,7 +51,7 @@ public class Player extends Entity {
 
         float xSpeed = 0;
 
-        float playerSpeed = 1.6f * Game.SCALE;
+        float playerSpeed = 1.0f * Game.SCALE;
         if(left)
             xSpeed -= playerSpeed;
         if(right)

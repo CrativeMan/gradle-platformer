@@ -1,12 +1,19 @@
 package io.crative.platformer.gamestates;
 
+import java.awt.event.MouseEvent;
+
 import io.crative.platformer.main.Game;
+import io.crative.platformer.ui.MenuButton;
 
 public class State {
     protected Game game;
 
     public State(Game game) {
         this.game = game;
+    }
+
+    public boolean isIn(MouseEvent e, MenuButton mb){
+        return mb.getBounds().contains(e.getX(), e.getY());
     }
 
     public Game getGame(){
