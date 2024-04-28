@@ -3,6 +3,7 @@ package io.crative.platformer.gamestates;
 import io.crative.platformer.entities.Player;
 import io.crative.platformer.levels.LevelManager;
 import io.crative.platformer.main.Game;
+import io.crative.platformer.ui.PauseOverlay;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -13,17 +14,19 @@ import static io.crative.platformer.main.Game.SCALE;
 public class Playing extends State implements Statemethodes {
     private Player player;
     private LevelManager levelManager;
+    private PauseOverlay pauseOverlay;
+    private boolean paused = false;
 
     public Playing(Game game) {
         super(game);
         initClasses();
     }
 
-
     private void initClasses() {
         levelManager = new LevelManager(game);
-        player = new Player(200,200, (int)(64*SCALE), (int)(40*SCALE));
+        player = new Player(200, 200, (int) (64 * SCALE), (int) (40 * SCALE));
         player.loadLevelData(levelManager.getCurrentLevel().getLevelData());
+        pauseOverlay = new PauseOverlay();
     }
 
     @Override
@@ -36,11 +39,12 @@ public class Playing extends State implements Statemethodes {
     public void render(Graphics g) {
         levelManager.draw(g);
         player.render(g);
+        pauseOverlay.render(g);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1){
+        if (e.getButton() == MouseEvent.BUTTON1) {
             player.getAnimator().setAttacking(true);
             player.setAttacking(true);
         }
@@ -51,7 +55,7 @@ public class Playing extends State implements Statemethodes {
     }
 
     @Override
-    public void mouseMoved(MouseEvent e){
+    public void mouseMoved(MouseEvent e) {
     }
 
     @Override
@@ -61,7 +65,7 @@ public class Playing extends State implements Statemethodes {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1){
+        if (e.getButton() == MouseEvent.BUTTON1) {
             player.getAnimator().setAttacking(false);
             player.setAttacking(false);
         }
@@ -101,9 +105,7 @@ public class Playing extends State implements Statemethodes {
         player.resetDirBooleans();
     }
 
-    public Player getPlayer(){
+    public Player getPlayer() {
         return player;
     }
 }
-
-
