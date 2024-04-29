@@ -60,17 +60,17 @@ public class PauseOverlay {
 
     public void mouseReleased(MouseEvent e){
         // checks if mouse is in button
-        if(isIn(e, musicButton))
+        if(isIn(e, musicButton)){
             // checks if the button was pressed
-            if(musicButton.getMousePressed())
+            if(musicButton.getMousePressed()){
                 // set button to the opposite of whatever it is
                 musicButton.setMuted(!musicButton.getMuted());
+            }
+        }
 
-        else if(isIn(e, sfxButton)){
-            System.out.println("isIn");
+        if(isIn(e, sfxButton)){
             if(sfxButton.getMousePressed()){
                 sfxButton.setMuted(!sfxButton.getMuted());
-                System.out.println("mute/unmute"); 
             }
         }
 
